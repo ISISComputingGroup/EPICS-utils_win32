@@ -5,6 +5,9 @@ REM It will also remove folders that do not exist
 REM
 REM arg is a variable name like PATH
 REM
+
+goto :EOF
+
 if "%1" == "" (
     @echo shorten_path: no path given
     exit/b 1
