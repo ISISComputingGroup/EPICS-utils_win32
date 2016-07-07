@@ -6,8 +6,6 @@ REM
 REM arg is a variable name like PATH
 REM
 
-goto :EOF
-
 if "%1" == "" (
     @echo shorten_path: no path given
     exit/b 1
@@ -23,9 +21,11 @@ FOR %%a IN (%TempPath%) DO (
     IF exist %%~sa (
         SET "var=!var!;%%~sa"
     ) ELSE (
-REM        echo %%a does not exist
-REM        add for now as may add EPICS directory before built e.g. msi 
-        SET "var=!var!;%%~sa"
+        IF /I "%2" NEQ "strip" (
+            SET "var=!var!;%%~sa"
+        ) else (
+            echo Removing %%a from %~1 as it does not exist
+        )
     )
 )
 
