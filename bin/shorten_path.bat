@@ -21,6 +21,8 @@ FOR %%a IN (%TempPath%) DO (
         SET "var=!var!;%%~sa"
     ) ELSE (
 REM        echo %%a does not exist
+REM        add for now as may add EPICS directory before built e.g. msi 
+        SET "var=!var!;%%~sa"
     )
 )
 
